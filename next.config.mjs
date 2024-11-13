@@ -19,17 +19,16 @@ const nextConfig = {
       },
     ],
   },
-
-  // Custom Webpack configuration
-  webpack: (config, { isServer }) => {
-    config.module.rules.push({
-      test: /\.(gif|svg|jpg|png|mp3)$/,
-      use: ["file-loader"],
-    });
-
-    return config;
+  module: {
+    rules: [
+      { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
+      { test: /\.css$/, use: ["style-loader", "css-loader"] },
+      {
+        test: /\.(gif|svg|jpg|png|mp3)$/,
+        use: ["file-loader"],
+      },
+    ],
   },
-
   // other boilerplate config goes down here
 };
 

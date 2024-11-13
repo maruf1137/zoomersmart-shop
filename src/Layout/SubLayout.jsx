@@ -1,15 +1,16 @@
 // import AuthModal from "@/Components/Auth/AuthModal";
-// import ThemeOptionContext from "@/Context/ThemeOptionsContext";
+import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 // import request from "@/Utils/AxiosUtils";
 // import { CompareAPI } from "@/Utils/AxiosUtils/API";
 // import TabFocusChecker from "@/Utils/CustomFunctions/TabFocus";
 // import { ToastNotification } from "@/Utils/CustomFunctions/ToastNotification";
 // import { useQuery } from "@tanstack/react-query";
-// import Cookies from "js-cookie";
-// import { usePathname, useSearchParams } from "next/navigation";
+import Cookies from "js-cookie";
+import { usePathname, useSearchParams } from "next/navigation";
 // import NextTopLoader from "nextjs-toploader";
-// import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // import ExitModal from "./ExitModal";
+import AuthModal from "@/Components/Auth/AuthModal";
 import Footers from "./Footer";
 import Headers from "./Header";
 // import MobileMenu from "./Header/Widgets/MobileMenu";
@@ -21,36 +22,36 @@ import TapTop from "./TapTop";
 
 const SubLayout = ({ children }) => {
   // const isTabActive = TabFocusChecker();
-  // const { themeOption, setOpenAuthModal } = useContext(ThemeOptionContext);
+  const { themeOption, setOpenAuthModal } = useContext(ThemeOptionContext);
   // const [makeExitActive, setMakeExitActive] = useState(false);
   // const path = useSearchParams();
   // const theme = path.get("theme");
-  // const pathName = usePathname();
+  const pathName = usePathname();
   // const disableMetaTitle = ["product", "blogs", "brand"];
-  // const accountVerified = Cookies.get("uat");
-  // const authToast = Cookies.get("showAuthToast");
+  const accountVerified = Cookies.get("uat");
+  const authToast = Cookies.get("showAuthToast");
 
-  // const protectedRoutes = [
-  //   `/account/dashboard`,
-  //   `/account/notification`,
-  //   `/account/wallet`,
-  //   `/account/bank-details`,
-  //   `/account/bank-details`,
-  //   `/account/point`,
-  //   `/account/refund`,
-  //   `/account/order`,
-  //   `/account/addresses`,
-  //   `/wishlist`,
-  //   `/compare`,
-  // ];
+  const protectedRoutes = [
+    `/account/dashboard`,
+    `/account/notification`,
+    `/account/wallet`,
+    `/account/bank-details`,
+    `/account/bank-details`,
+    `/account/point`,
+    `/account/refund`,
+    `/account/order`,
+    `/account/addresses`,
+    `/wishlist`,
+    `/compare`,
+  ];
 
-  // useEffect(() => {
-  //   if (!accountVerified && authToast && protectedRoutes.includes(pathName)) {
-  //     ToastNotification("error", "Unauthenticated");
-  //     setOpenAuthModal(true);
-  //   }
-  //   return () => Cookies.remove("showAuthToast");
-  // }, [pathName]);
+  useEffect(() => {
+    if (!accountVerified && authToast && protectedRoutes.includes(pathName)) {
+      ToastNotification("error", "Unauthenticated");
+      setOpenAuthModal(true);
+    }
+    return () => Cookies.remove("showAuthToast");
+  }, [pathName]);
 
   // useEffect(() => {
   //   const setThemeColors = () => {
@@ -254,6 +255,7 @@ const SubLayout = ({ children }) => {
     <>
       <Headers />
       {children}
+      <AuthModal />
       <Footers />
       <div className="compare-tap-top-box">
         <TapTop />

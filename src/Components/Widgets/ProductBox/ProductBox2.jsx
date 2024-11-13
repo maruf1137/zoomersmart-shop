@@ -63,10 +63,10 @@ const ProductBox2 = ({ productState, setProductState }) => {
             <span>{productState?.product?.reviews_count}</span>
           </div> */}
           <div className="cart-info">
-            {/* <WishlistButton
+            <WishlistButton
               customAnchor={true}
               productstate={productState?.product}
-            /> */}
+            />
             <CartButton
               productState={productState}
               selectedVariation={productState.selectedVariation}

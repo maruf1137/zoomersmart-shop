@@ -95,23 +95,23 @@ const HeaderOne = () => {
                         <li className="onhover-div">
                           <HeaderSearchbar />
                         </li>
-                        {/* <li className="onhover-div">
+                        <li className="onhover-div">
                           <Link
                             href={isAuthenticated ? "/wishlist" : Href}
                             onClick={handleWishlistClick}>
                             <RiHeartLine />
                           </Link>
-                        </li> */}
+                        </li>
                         <li className="onhover-div">
                           <HeaderCart />
                         </li>
-                        {/* <li className="onhover-div">
+                        <li className="onhover-div">
                           <Link
                             href={isAuthenticated ? "/account/dashboard" : Href}
                             onClick={handleProfileClick}>
                             <RiUserLine />
                           </Link>
-                        </li> */}
+                        </li>
                       </ul>
                     </div>
                   </div>

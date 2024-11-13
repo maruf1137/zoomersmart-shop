@@ -8,15 +8,16 @@ import EmailPassword from "./EmailPassword";
 const ProfileInformation = () => {
   const { t } = useTranslation("common");
   const { accountData } = useContext(AccountContext);
+
   return (
-    <div className='box-account box-info'>
+    <div className="box-account box-info">
       <Row>
         <Col xs={12}>
-          <div className='box-account box-info'>
-            <div className='box-head'>
+          <div className="box-account box-info">
+            <div className="box-head">
               <h4>{t("AccountInformation")}</h4>
             </div>
-            <ul className='box-content'>
+            <ul className="box-content">
               <li>
                 <h6>
                   {t("FullName")} : {CapitalizeMultiple(accountData?.name)}
@@ -24,20 +25,24 @@ const ProfileInformation = () => {
               </li>
               <li>
                 <h6>
-                  {t("Phone")} : +{accountData?.country_code} {accountData?.phone}
+                  {t("Phone")} : +{accountData?.country_code}{" "}
+                  {accountData?.phone}
                 </h6>
               </li>
               {accountData?.address[0] ? (
                 <li>
                   <h6>
                     {t("Address")} : {accountData?.address[0]?.street}
-                    {accountData?.address[0]?.city}, {accountData?.address[0]?.state.name}, {accountData?.address[0]?.country.name} {accountData?.address[0]?.pincode}
+                    {accountData?.address[0]?.city},{" "}
+                    {accountData?.address[0]?.state.name},{" "}
+                    {accountData?.address[0]?.country.name}{" "}
+                    {accountData?.address[0]?.pincode}
                   </h6>
                 </li>
               ) : null}
             </ul>
-            <div className='box mt-3'>
-              <div className='box-head'>
+            <div className="box mt-3">
+              <div className="box-head">
                 <h4>{t("LoginDetails")}</h4>
               </div>
             </div>
